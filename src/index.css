@@ -1,0 +1,140 @@
+@import '@fontsource-variable/cormorant-garamond';
+@import '@fontsource-variable/jost';
+@import 'tailwindcss';
+
+/* ------------------------------------------------------------------ *
+ * Design tokens
+ * Ivory + antique gold + deep espresso — the palette the brand already
+ * uses, pushed a little further toward editorial.
+ * ------------------------------------------------------------------ */
+@theme {
+  --color-ivory: #fbf9f5;
+  --color-cream: #f4efe6;
+  --color-sand: #e6dcca;
+  --color-gold: #b08d44;
+  --color-gold-500: #b8955a;
+  --color-gold-600: #9a7c45;
+  --color-gold-300: #d8c295;
+  --color-espresso: #1c1a17;
+  --color-bark: #3a342c;
+  --color-stone: #6f675b;
+  --color-blush: #e9d9d2;
+
+  --font-display: 'Cormorant Garamond Variable', 'Cormorant Garamond', Georgia, serif;
+  --font-sans: 'Jost Variable', 'Jost', ui-sans-serif, system-ui, sans-serif;
+
+  --tracking-luxe: 0.28em;
+
+  --ease-out-luxe: cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+    }
+  }
+
+  body {
+    background-color: var(--color-ivory);
+    color: var(--color-bark);
+    font-family: var(--font-sans);
+    font-weight: 300;
+    line-height: 1.7;
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-family: var(--font-display);
+    font-weight: 300;
+    color: var(--color-espresso);
+    line-height: 1.08;
+    letter-spacing: -0.01em;
+  }
+
+  ::selection {
+    background: var(--color-gold-300);
+    color: var(--color-espresso);
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold-600);
+    outline-offset: 3px;
+    border-radius: 2px;
+  }
+
+  img {
+    display: block;
+    max-width: 100%;
+  }
+}
+
+@layer components {
+  /* Small caps label used above most section headings */
+  .eyebrow {
+    font-family: var(--font-sans);
+    font-size: 0.6875rem;
+    font-weight: 500;
+    letter-spacing: var(--tracking-luxe);
+    text-transform: uppercase;
+    color: var(--color-gold-600);
+  }
+
+  /* Thin gold rule with a diamond in the middle */
+  .rule {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    color: var(--color-sand);
+  }
+  .rule::before,
+  .rule::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: currentColor;
+  }
+}
+
+/* Ken-burns drift on the hero image */
+@keyframes drift {
+  from {
+    transform: scale(1.06) translate3d(0, 0, 0);
+  }
+  to {
+    transform: scale(1.16) translate3d(-1.2%, -1.2%, 0);
+  }
+}
+
+.animate-drift {
+  animation: drift 26s ease-in-out infinite alternate;
+}
+
+/* Utility: hide from sighted users, keep for screen readers */
+.sr-only-focusable:not(:focus) {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
