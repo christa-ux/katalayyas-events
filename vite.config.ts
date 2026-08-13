@@ -4,34 +4,39 @@ import tailwindcss from '@tailwindcss/vite'
 
 /**
  * The Content-Security-Policy is defined once here and injected into index.html
- * at build time so the dev server and the production bundle stay in sync.
+ * so the dev server and the production bundle stay in sync. The two differ only
+ * in the transport-level directives, which are meaningless over plain-HTTP dev.
  * Production hosts additionally send it (and the rest of the security headers)
  * as real HTTP headers - see public/_headers and vercel.json.
  */
 // frame-ancestors is deliberately absent: browsers ignore it in a <meta> tag.
 // It is enforced as a real header (public/_headers, vercel.json) instead.
-const CSP = [
-  "default-src 'self'",
-  "script-src 'self'",
-  "style-src 'self' 'unsafe-inline'", // inline styles are needed for animated transforms
-  "img-src 'self' data:",
-  "font-src 'self'",
-  "connect-src 'self' https://api.web3forms.com",
-  "form-action 'self' https://api.web3forms.com",
-  "frame-src https://www.google.com https://maps.google.com",
-  "base-uri 'self'",
-  "object-src 'none'",
-  'upgrade-insecure-requests',
-].join('; ')
+const csp = (isDev: boolean) =>
+  [
+    "default-src 'self'",
+    "script-src 'self'",
+    "style-src 'self' 'unsafe-inline'", // inline styles are needed for animated transforms
+    "img-src 'self' data:",
+    "font-src 'self'",
+    // ws: is the dev server's HMR socket; Safari does not treat 'self' as covering it.
+    `connect-src 'self' https://api.web3forms.com${isDev ? ' ws:' : ''}`,
+    "form-action 'self' https://api.web3forms.com",
+    "frame-src https://www.google.com https://maps.google.com",
+    "base-uri 'self'",
+    "object-src 'none'",
+    // Dev is served over plain HTTP, so upgrading subresources to https would
+    // point every module and asset at a port with no TLS listener.
+    ...(isDev ? [] : ['upgrade-insecure-requests']),
+  ].join('; ')
 
-export default defineConfig({
+export default defineConfig(({ command }) => ({
   plugins: [
     react(),
     tailwindcss(),
     {
       name: 'inject-csp',
-      transformIndexHtml(html) {
-        return html.replace('%CSP%', CSP)
+      transformIndexHtml(html: string) {
+        return html.replace('%CSP%', csp(command === 'serve'))
       },
     },
   ],
@@ -51,4 +56,4 @@ export default defineConfig({
       },
     },
   },
-})
+}))
