@@ -1,0 +1,6 @@
+# Canonical host: send the apex to www so there is one indexed origin.
+http://katalayyasevents.com/*   https://www.katalayyasevents.com/:splat   301!
+https://katalayyasevents.com/*  https://www.katalayyasevents.com/:splat   301!
+
+# SPA fallback — every unknown path is handled by the React router.
+/*  /index.html  200
