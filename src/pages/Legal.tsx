@@ -65,7 +65,7 @@ const privacy: Section[] = [
   {
     heading: 'Third-party services',
     paragraphs: [
-      'The contact page embeds a Google Maps frame so you can find the studio. Loading that frame is subject to Google’s own privacy policy. Links to Instagram and Facebook open on those platforms and are governed by their policies.',
+      'The contact page embeds a Google Maps frame so you can find the studio. Loading that frame is subject to Google’s own privacy policy. Links to Instagram and WhatsApp open on those platforms and are governed by their policies.',
     ],
   },
   {

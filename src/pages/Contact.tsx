@@ -2,7 +2,7 @@ import { useId, useRef, useState } from 'react'
 import { motion } from 'framer-motion'
 import { Seo } from '../components/Seo'
 import { PageHero } from '../components/PageHero'
-import { Button, Container, Divider, Reveal } from '../components/primitives'
+import { Button, ButtonLink, Container, Divider, Reveal } from '../components/primitives'
 import { cx } from '../lib/cx'
 import { fullAddress, site } from '../data/site'
 import {
@@ -340,12 +340,12 @@ export default function Contact() {
                       Instagram
                     </a>
                     <a
-                      href={site.social.facebook}
+                      href={site.social.whatsapp}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="text-bark transition-colors hover:text-gold-600"
                     >
-                      Facebook
+                      WhatsApp
                     </a>
                   </dd>
                 </div>
@@ -353,6 +353,24 @@ export default function Contact() {
 
               <div className="mt-12">
                 <Divider />
+              </div>
+
+              <div className="mt-12">
+                <p className="eyebrow">Already booked?</p>
+                <h3 className="mt-3 text-2xl">Send your deposit</h3>
+                <p className="mt-3 max-w-sm text-[0.95rem] leading-relaxed text-stone">
+                  Once we&rsquo;ve confirmed your date, you can send a deposit or invoice payment
+                  directly below. Card payment is available as a guest through PayPal — no
+                  account needed.
+                </p>
+                <div className="mt-6 flex flex-wrap gap-4">
+                  <ButtonLink href={site.payments.paypal} tone="outline">
+                    Pay with PayPal / Card
+                  </ButtonLink>
+                  <ButtonLink href={site.payments.venmo} tone="outline">
+                    Pay with Venmo
+                  </ButtonLink>
+                </div>
               </div>
             </Reveal>
 

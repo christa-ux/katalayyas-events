@@ -38,7 +38,7 @@ const structuredData = {
     addressCountry: 'US',
   },
   areaServed: ['Ashburn VA', 'Loudoun County', 'Northern Virginia', 'Washington DC', 'Maryland'],
-  sameAs: [site.social.instagram, site.social.facebook],
+  sameAs: [site.social.instagram],
   priceRange: '$$-$$$',
 }
 
