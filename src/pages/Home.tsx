@@ -237,24 +237,28 @@ const testimonials = [
     quote:
       "Ola is absolutely amazing, and her team made my special day incredibly easy. I will be recommending her to all my friends for all their party planning needs.",
     name: 'Jonathan',
+    photo: '/images/testimonials/jonathan.jpg',
   },
   {
     quote:
       'The most professional and talented team that makes you save time, energy with less anxiety and stress on your phenomenal memorable wedding!',
     name: 'Joelle',
     event: 'Wedding',
+    photo: '/images/testimonials/joelle.jpg',
   },
   {
     quote:
       "I really can't thank you enough for the AMAZING birthday party you organized for me. Everything turned out to be better than I could have imagined — I just wanted you to know how much I and my guests enjoyed it, you did a great job!",
     name: 'Afa',
     event: 'Birthday',
+    photo: '/images/testimonials/afa.jpg',
   },
   {
     quote:
       "Katalayya's events did an amazing job organizing my son's graduation party. Your attention to detail ensured the success of the party, and all guests had a great time. I appreciate your hard work, and I will definitely contact you again in the future.",
     name: 'Yara',
     event: 'Graduation party',
+    photo: '/images/testimonials/yara.jpg',
   },
 ]
 
@@ -273,7 +277,15 @@ function Testimonial() {
         <ul className="mt-16 grid gap-px overflow-hidden border border-sand bg-sand sm:grid-cols-2">
           {testimonials.map((t, i) => (
             <Reveal as="li" key={t.name} delay={i * 0.08} className="bg-ivory p-9 sm:p-10">
-              <span className="block size-2 rotate-45 bg-gold-500" aria-hidden="true" />
+              <img
+                src={t.photo}
+                alt=""
+                aria-hidden="true"
+                width={56}
+                height={56}
+                loading="lazy"
+                className="size-14 rounded-full object-cover"
+              />
               <p className="mt-6 text-[1.05rem] leading-relaxed text-stone">
                 &ldquo;{t.quote}&rdquo;
               </p>
