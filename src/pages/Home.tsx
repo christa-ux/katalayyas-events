@@ -1,13 +1,7 @@
 import { Link } from 'react-router-dom'
 import { motion, useReducedMotion } from 'framer-motion'
 import { Seo } from '../components/Seo'
-import {
-  ButtonLink,
-  Container,
-  Divider,
-  Reveal,
-  SectionHeading,
-} from '../components/primitives'
+import { ButtonLink, Container, Reveal, SectionHeading } from '../components/primitives'
 import { eventTypes, gallery, process, site } from '../data/site'
 
 /* ---------------------------------------------------------------- Hero */
@@ -238,25 +232,60 @@ function Process() {
 
 /* ---------------------------------------------------------- Testimonial */
 
+const testimonials = [
+  {
+    quote:
+      "Ola is absolutely amazing, and her team made my special day incredibly easy. I will be recommending her to all my friends for all their party planning needs.",
+    name: 'Jonathan',
+  },
+  {
+    quote:
+      'The most professional and talented team that makes you save time, energy with less anxiety and stress on your phenomenal memorable wedding!',
+    name: 'Joelle',
+    event: 'Wedding',
+  },
+  {
+    quote:
+      "I really can't thank you enough for the AMAZING birthday party you organized for me. Everything turned out to be better than I could have imagined — I just wanted you to know how much I and my guests enjoyed it, you did a great job!",
+    name: 'Afa',
+    event: 'Birthday',
+  },
+  {
+    quote:
+      "Katalayya's events did an amazing job organizing my son's graduation party. Your attention to detail ensured the success of the party, and all guests had a great time. I appreciate your hard work, and I will definitely contact you again in the future.",
+    name: 'Yara',
+    event: 'Graduation party',
+  },
+]
+
 function Testimonial() {
   return (
     <section className="bg-ivory py-24 lg:py-32">
-      <Container size="narrow">
-        <Reveal className="text-center">
-          <Divider />
-          <blockquote className="mt-10">
-            <p className="font-[family-name:var(--font-display)] text-[1.8rem] leading-[1.35] text-espresso italic sm:text-4xl">
-              &ldquo;Ola thought of everything before we did. On the day itself we did not
-              answer a single question — we just got to be with our families.&rdquo;
-            </p>
-            <footer className="mt-9">
-              <span className="eyebrow">A Loudoun County wedding</span>
-            </footer>
-          </blockquote>
-          <div className="mt-10">
-            <Divider />
-          </div>
-        </Reveal>
+      <Container size="wide">
+        <SectionHeading
+          eyebrow="Kind words"
+          title={
+            <>
+              What <span className="italic text-gold-600">clients</span> say
+            </>
+          }
+        />
+        <ul className="mt-16 grid gap-px overflow-hidden border border-sand bg-sand sm:grid-cols-2">
+          {testimonials.map((t, i) => (
+            <Reveal as="li" key={t.name} delay={i * 0.08} className="bg-ivory p-9 sm:p-10">
+              <span className="block size-2 rotate-45 bg-gold-500" aria-hidden="true" />
+              <p className="mt-6 text-[1.05rem] leading-relaxed text-stone">
+                &ldquo;{t.quote}&rdquo;
+              </p>
+              <footer className="mt-6">
+                <span className="eyebrow">
+                  {t.name}
+                  {t.event ? ` — ${t.event}` : ''}
+                </span>
+              </footer>
+            </Reveal>
+          ))}
+        </ul>
       </Container>
     </section>
   )
