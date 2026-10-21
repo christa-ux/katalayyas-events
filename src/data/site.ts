@@ -28,14 +28,9 @@ export const site = {
     whatsapp: 'https://wa.me/17033386879',
   },
   instagramHandle: '@katalayyasevents',
-  /**
-   * TODO: placeholder handles — swap for the client's real PayPal.me and
-   * Venmo usernames before launch. PayPal.me links also accept card payment
-   * as a guest, so no separate credit-card processor is wired up here.
-   */
   payments: {
-    paypal: 'https://paypal.me/REPLACE_ME_PAYPAL',
-    venmo: 'https://venmo.com/u/REPLACE_ME_VENMO',
+    venmo: 'https://venmo.com/u/katalayyasevents',
+    zellePhone: '703-338-6879',
   },
 } as const
 

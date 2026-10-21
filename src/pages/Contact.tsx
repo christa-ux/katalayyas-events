@@ -360,17 +360,17 @@ export default function Contact() {
                 <h3 className="mt-3 text-2xl">Send your deposit</h3>
                 <p className="mt-3 max-w-sm text-[0.95rem] leading-relaxed text-stone">
                   Once we&rsquo;ve confirmed your date, you can send a deposit or invoice payment
-                  directly below. Card payment is available as a guest through PayPal — no
-                  account needed.
+                  directly below.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4">
-                  <ButtonLink href={site.payments.paypal} tone="outline">
-                    Pay with PayPal / Card
-                  </ButtonLink>
                   <ButtonLink href={site.payments.venmo} tone="outline">
                     Pay with Venmo
                   </ButtonLink>
                 </div>
+                <p className="mt-5 text-[0.95rem] text-stone">
+                  Prefer Zelle? Send to{' '}
+                  <span className="font-medium text-bark">{site.payments.zellePhone}</span>.
+                </p>
               </div>
             </Reveal>
 

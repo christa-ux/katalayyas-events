@@ -55,11 +55,21 @@ export default function About() {
                 loading="lazy"
                 className="aspect-4/5 w-full object-cover"
               />
-              <div className="mt-8 border-l-2 border-gold-500 pl-6">
-                <p className="font-[family-name:var(--font-display)] text-2xl text-espresso">
-                  {site.founder}
-                </p>
-                <p className="eyebrow mt-1.5">Founder &amp; Lead Planner</p>
+              <div className="mt-8 flex items-center justify-between gap-6 border-l-2 border-gold-500 pl-6">
+                <div>
+                  <p className="font-[family-name:var(--font-display)] text-2xl text-espresso">
+                    {site.founder}
+                  </p>
+                  <p className="eyebrow mt-1.5">Founder &amp; Lead Planner</p>
+                </div>
+                <img
+                  src="/images/iewp-certification.png"
+                  alt="Certified International Event & Wedding Professional (IEWP) seal"
+                  width={600}
+                  height={600}
+                  loading="lazy"
+                  className="size-16 shrink-0 object-contain sm:size-20"
+                />
               </div>
             </Reveal>
 
