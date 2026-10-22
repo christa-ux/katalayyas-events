@@ -359,8 +359,9 @@ export default function Contact() {
                 <p className="eyebrow">Already booked?</p>
                 <h3 className="mt-3 text-2xl">Send your deposit</h3>
                 <p className="mt-3 max-w-sm text-[0.95rem] leading-relaxed text-stone">
-                  Once we&rsquo;ve confirmed your date, you can send a deposit or invoice payment
-                  directly below.
+                  Once we&rsquo;ve confirmed your date, payment is split in two: half due to
+                  secure your booking, and the remaining half due the day of your event. You
+                  can send either payment directly below.
                 </p>
                 <div className="mt-6 flex flex-wrap gap-4">
                   <ButtonLink href={site.payments.venmo} tone="outline">
